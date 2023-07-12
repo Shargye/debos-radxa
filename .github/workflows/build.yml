@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Get time
         id: time
-        uses: nanzm/get-time-action@v1.1
+        uses: nanzm/get-time-action@master
         with:
           format: 'YYYYMMDD-HHmm'
       - name: Create empty release
@@ -55,7 +55,7 @@ jobs:
         include: ${{ fromJson(needs.prepare_supported_configs.outputs.combinations) }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@main
       - name: Build image
         run: |
           docker run --rm --tty --tmpfs /dev/shm:rw,nosuid,nodev,exec,size=4g --user $(id -u) --security-opt label=disable \
